@@ -1,0 +1,29 @@
+$fsz-status: 128px;
+$fw-status: 900;
+$color-status: #e73616;
+$ls-status: 0.1em;
+
+.error_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    h1,
+    h2 {
+        line-height: 1;
+    }
+
+    h1 {
+        font-size: $fsz-status;
+        font-weight: $fw-status;
+        color: $color-status;
+        letter-spacing: $ls-status;
+        margin: 0;
+    }
+
+    button {
+        margin-top: 16px;
+    }
+}
