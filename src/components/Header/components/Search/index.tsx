@@ -3,6 +3,7 @@ import style from "./style.module.scss";
 import { useMatchMedia } from '../../../../hooks/use-match-media';
 import { SearchIcon } from '../../../Icons/Search';
 import { CloseIcon } from "../../../Icons/Close";
+import { Input } from '../../../Forms/components/Input/index';
 
 export const HeaderSearch = memo(() => {
     const { isMobile } = useMatchMedia();
@@ -21,7 +22,7 @@ export const HeaderSearch = memo(() => {
                         {isMobileShow && (
                             <div className={style.search_control}>
                                 <SearchIcon />
-                                <input
+                                <Input
                                     type="text"
                                     placeholder="Search"
                                     className={style.search_input}

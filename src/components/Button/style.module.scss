@@ -1,5 +1,6 @@
 .button {
     display: inline-flex;
+    align-items: center;
     padding: 20px;
     border: none;
     border-radius: 16px;
@@ -11,6 +12,25 @@
 
     &__small {
         @include font-options(700, 16px, 19px);
+    }
+
+    &__rounded {
+        padding: 12px 24px;
+        border-radius: 25px;
+    }
+
+    &__shadow {
+        box-shadow: 0px 4px 11px rgba(33, 33, 33, 0.35);
+
+        &:hover {
+            box-shadow: 0px 8px 11px rgba(33, 33, 33, 0.75);
+        }
+    }
+
+    span {
+        + i {
+            margin-left: 30px;
+        }
     }
 
     &:hover {

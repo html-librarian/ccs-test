@@ -9,6 +9,7 @@ export default function Button<E extends ElementType = typeof defaultElement>({
         children,
         className,
         smallSize,
+        shadow,
         rounded,
         as,
         ...otherProps
@@ -18,6 +19,7 @@ export default function Button<E extends ElementType = typeof defaultElement>({
         style.button,
         smallSize && style.button__small,
         rounded && style.button__rounded,
+        shadow && style.button__shadow,
         className
     );
     const TagName = as || defaultElement;

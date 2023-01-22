@@ -1,10 +1,11 @@
-import { ComponentProps, ElementType } from "react";
+import { ComponentProps, ElementType, ReactElement } from "react";
 
 export type ButtonOwnPropsT<E extends ElementType = ElementType> = {
-    children: string;
+    children: ReactElement;
     className?: string;
     smallSize?: boolean;
     rounded?: boolean;
+    shadow?: boolean;
     as?: E;
 };
 
