@@ -13,7 +13,11 @@ export const Banner = memo<IBanner>(({
 }) => {
     return (
         <section className={style.banner}>
-            <LazyLoadImage src={ ImageBanner } alt={ title } />
+            <LazyLoadImage
+                src={ ImageBanner }
+                alt={ title }
+                effect="blur"
+            />
             <div className={style.banner_content}>
                 <h2>{ title }</h2>
                 <p>{ text }</p>
