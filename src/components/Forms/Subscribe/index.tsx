@@ -14,7 +14,7 @@ export const Subscribe = memo(() => {
                     type="email"
                     required
                 />
-                <Button smallSize type="button">
+                <Button smallSize type="submit">
                     Subscribe
                 </Button>
             </form>
