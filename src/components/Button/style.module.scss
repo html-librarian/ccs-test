@@ -1,0 +1,19 @@
+.button {
+    display: inline-flex;
+    padding: 20px;
+    border: none;
+    border-radius: 16px;
+    background-color: var(--blue);
+    color: var(--white);
+    @include font-options(700, 22px, 27px);
+    @include transition;
+    cursor: pointer;
+
+    &__small {
+        @include font-options(700, 16px, 19px);
+    }
+
+    &:hover {
+        opacity: 0.9;
+    }
+}

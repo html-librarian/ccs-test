@@ -3,4 +3,5 @@ export interface IMenuType {
     path: string;
     counter?: number;
     icon?: JSX.Element;
+    phone?: boolean;
 }

@@ -1,4 +1,5 @@
 import { Link, Outlet, useNavigation } from "react-router-dom";
+import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 
 export const Root = () => {
@@ -14,7 +15,7 @@ export const Root = () => {
       >
         <Outlet />
       </main>
-      <footer className="footer">Footer</footer>
+      <Footer />
     </div>
   );
 };

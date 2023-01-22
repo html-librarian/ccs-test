@@ -10,7 +10,7 @@ import cn from "classnames";
 
 export const Header = memo(() => {
     const { isMobile, isDesktop } = useMatchMedia();
-    const [mobileNavShow, setMobileNavShow] = useState(!!isDesktop);
+    const [mobileNavShow, setMobileNavShow] = useState(false);
 
     const toggleNav = () => {
         setMobileNavShow(!mobileNavShow);
