@@ -12,6 +12,15 @@
     @include transition;
     cursor: pointer;
 
+    &__secondary {
+        background-color: var(--light);
+        color: var(--dark);
+
+        &:hover {
+            color: var(--white);
+        }
+    }
+
     &__small {
         @include font-options(700, 16px, 19px);
     }

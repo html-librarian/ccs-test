@@ -9,9 +9,11 @@ import { ChatIcon } from './Chat/index';
 import { CatalogIcon } from './Catalog/index';
 import { HeadphoneIcon } from './Headphone/index';
 import { BulbIcon } from './Bulb/index';
+import { ArrowIcon } from './Arrow/index';
 
 export {
     AccountIcon,
+    ArrowIcon,
     BulbIcon,
     CartIcon,
     CatalogIcon,
