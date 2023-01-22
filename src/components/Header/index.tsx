@@ -1,83 +1,95 @@
-import { memo } from "react";
+import { memo, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./header.module.scss";
 import { Logo } from '../Logo/index';
+import { useMatchMedia } from '../../hooks/use-match-media';
+import { NAV_ACCAUNT, NAV_BOTTOM, NAV_TOP } from "./constants";
+import { HeaderSearch } from "./components/Search";
+import { Phone } from "../Phone";
+import cn from "classnames";
 
 export const Header = memo(() => {
+    const { isMobile, isTablet, isDesktop } = useMatchMedia();
+    const [mobileNavShow, setMobileNavShow] = useState(!!isDesktop);
+
+    const toggleNav = () => {
+        setMobileNavShow(!mobileNavShow);
+    };
+
+    const menuItemsTop = useMemo(() => NAV_TOP.map(({ title, path }, index) => (
+            <Link key={ index } to={ path }>
+                { title }
+            </Link>
+        )), [],
+    );
+
+    const menuItemsAccaunt = useMemo(() => NAV_ACCAUNT.map(({ title, path, counter, icon }, index) => (
+            <Link key={index} to={path}>
+                { icon }
+                { title }
+                { counter && <span className={style.badge}>{ counter }</span> }
+            </Link>
+        )), [],
+    );
+
+    const menuItemsBottom = useMemo(() => NAV_BOTTOM.map(({ title, path }, index) => (
+            <Link key={ index } to={ path }>
+                { title }
+            </Link>
+        )), [],
+    );
+
     return (
         <header className={style.header}>
-            {/* Скрываем на мобилках */}
-            <nav className={style.header_top}>
-                <ul>
-                    {/* Выносим в константы и делаем map */}
-                    <li>
-                        <Link to={`#`}>Пункт меню</Link>
-                    </li>
-                </ul>
-            </nav>
-            {/* Скрываем на мобилках */}
-            <div className={style.header_main}>
-                <Logo />
-                <div className="search">
-                    <form action="" className={style.search_form}>
-                        {/* TODO: Сделать отдельным компонентом Инпут */}
-                        <input
-                            type="text"
-                            placeholder="Search"
-                            className={style.search_input}
-                        />
-                    </form>
-                </div>
-                {/* TODO: 
-                    Скрывать на десктопу.
-                    Сделать логику появления поиска на мобилках и таблетках.
-                    Вставить вместо текста в кнопке иконку
-                */}
-                <button
-                    type="button"
-                    title="Toggle search"
-                >
-                    I - search
-                </button>
-                {/* TODO: Скрывать с десктопа */}
-                <button
-                    className={style.header_toggler}
-                    type="button"
-                    title="Toggle navigation"
-                >
-                    <span />
-                    <span />
-                    <span />
-                </button>
-                {/* Скрываем на мобилках */}
-                <nav>
-                    <ul>
-                        <li>
-                            Lists
-                        </li>
-                        <li>
-                            Account
-                        </li>
-                        <li>
-                            Quick order
-                        </li>
-                        <li>
-                            Cart
-                        </li>
-                    </ul>
-                </nav>
-                {/* / Скрываем на мобилках */}
+            <div className={style.header__top}>
+                { !isDesktop && (
+                    <Phone 
+                        number="844434672"
+                        classname={style.header_phone}
+                        icon
+                        widthIcon={24}
+                        heightIcon={24}
+                    />
+                ) }
+                { !isMobile && <nav>{ menuItemsTop }</nav> }
             </div>
-            {/* Скрываем на мобилках */}
-            <nav className={style.header_bottom}>
-                <ul>
-                    {/* TODO: Выносим роуты в константы и делаем map */}
-                    <li>
-                        <Link to={`#`}>Item main</Link>
-                    </li>
-                </ul>
-            </nav>
-            {/* / Скрываем на мобилках */}
+            <div className={style.header__main}>
+                <Logo />
+                <HeaderSearch />
+                {isDesktop &&  <nav className={style.header_nav_account}>{ menuItemsAccaunt }</nav>}
+                {!isDesktop && (
+                    <button
+                        className={cn(style.header_toggler, mobileNavShow && style.header_toggler__show )}
+                        type="button"
+                        title="Toggle navigation"
+                        onClick={toggleNav}
+                    >
+                        <span />
+                        <span />
+                        <span />
+                    </button>
+                )}
+            </div>
+            { isDesktop && (
+                <div className={style.header__bottom}>
+                    <nav className={style.header_nav__bottom}>{ menuItemsBottom }</nav>
+                    <Phone 
+                        number="844434672"
+                        classname={style.header_phone}
+                        icon
+                        widthIcon={24}
+                        heightIcon={24}
+                    />
+                </div>
+            ) }
+
+            {!isDesktop && mobileNavShow && (
+                <div className={style.mobile_nav}>
+                    <nav className={style.mobile_nav__icons}>{ menuItemsAccaunt }</nav>
+                    <nav>{ menuItemsBottom }</nav>
+                    {isMobile && <nav>{ menuItemsTop }</nav> }
+                </div>
+            )}
         </header>
     );
 });

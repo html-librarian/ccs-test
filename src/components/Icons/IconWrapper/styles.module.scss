@@ -1,0 +1,11 @@
+.icon {
+	color: transparent;
+
+	&,
+	& svg {
+		display: block;
+
+		color: inherit;
+		transition: get-transition(opacity, visibility, transform);
+	}
+}

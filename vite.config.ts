@@ -11,8 +11,7 @@ export default defineConfig({
         sourceMap: false,
         additionalData: `
             @import "./src/assets/scss/_fonts.scss";
-            @import "./src/assets/scss/_root.scss";
-            @import "./src/assets/scss/mixins.scss";
+            @import "./src/assets/scss/_mixins.scss";
         `,
       },
     },

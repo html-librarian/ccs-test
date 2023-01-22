@@ -1,11 +1,46 @@
 .header {
-    &_top,
-    &_bottom {
-        display: none;
+    padding-top: 12px;
+
+    &_phone {
+        display: flex;
+        align-items: center;
+        @include font-options(400, 22px, 27px);
+        color: var(--blue);
+        text-decoration: none;
+
+        i {
+            color: var(--blue);
+            margin-right: 9px;
+        }
+
+        span {
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -2px;
+                width: 100%;
+                height: 1px;
+                background-color: var(--blue);
+                opacity: 0.3;
+                @include transition();
+            }
+        }
+
+        &:hover,
+        &:focus {
+            span {
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
     }
 
     &_toggler {
-        display: inline-flex;
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
@@ -13,18 +48,211 @@
         height: 24px;
         background-color: transparent;
         border: none;
-        outline: none;
         cursor: pointer;
+        position: relative;
 
         span {
             display: block;
-            width: 100%;
+            width: 22px;
             height: 2px;
-            background-color: red;
+            background-color: var(--blue);
+            @include transition;
+        }
+
+        &__show {
+            span {
+                position: absolute;
+                &:nth-child(1) {
+                    display: none;
+                }
+                &:nth-child(2) {
+                    transform: rotate(45deg);
+                }
+                &:nth-child(3) {
+                    transform: rotate(-45deg);
+                }
+            }
         }
     }
 
-    &_main {
+    &__main {
         display: flex;
+        width: 100%;
+        align-items: center;
+        margin-top: 12px;
+        @include font-options();
+        @include tablet {
+            margin-top: 24px;
+        }
+        @include desktop {
+            margin-top: 12px;
+        }
+    }
+
+    &__top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include font-options();
+        @include tablet {    
+            justify-content: space-between;
+        }
+
+        nav {
+            margin-left: auto;
+            a {
+                position: relative;
+                margin-left: 18px;
+                text-decoration: none;
+                color: var(--blue);
+
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: var(--blue);
+                    opacity: 0.3;
+                    transition: 0.2s ease-in-out;
+                }
+
+                &:hover {
+                    &::after {
+                        bottom: -3px;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        margin-top: 24px;
+
+        nav {
+            margin-right: auto;
+
+            a {
+                position: relative;
+                @include font-options(400, 22px, 27px);
+                color: var(--dark);
+                text-decoration: none;
+
+                margin-right: 20px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: var(--gray-100);
+                    opacity: 0.5;
+                    @include transition();
+                }
+
+                &:hover {
+                    &::after {
+                        bottom: -2px;
+                        height: 2px;
+                        opacity: 1;
+                        background-color: var(--dark);
+                    }
+                }
+            }
+        }
+    }
+
+    &_nav_account {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            flex-wrap: nowrap;
+            color: var(--dark);
+            margin-left: 16px;
+
+            i {
+                color: var(--gray-100);
+                margin-right: 10px;
+                @include transition();
+            }
+
+            &:hover {
+                i {
+                    color: var(--dark);
+                }
+            }
+        }
+    }
+
+    .mobile_nav {
+        position: absolute;
+        left: 0;
+        top: 96px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0 12px;
+        background-color: var(--white);
+        min-height: calc(100vh - 96px);
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: center;
+            min-height: auto;
+            top: 108px;
+            padding: 24px 12px;
+            border-bottom: 1px solid var(--light);
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding: 6px 12px;
+                border-radius: 6px;
+                color: var(--dark);
+
+                i {
+                    margin-left: 6px;
+
+                    svg {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+
+                &:hover {
+                    background-color: var(--blue);
+                    color: var(--white);
+                }
+            }
+
+            &.mobile_nav__icons {
+                a {
+                    flex-direction: row-reverse;
+                    justify-content: flex-start;
+                }
+            }
+        }
     }
 }

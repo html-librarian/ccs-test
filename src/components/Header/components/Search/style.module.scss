@@ -1,0 +1,54 @@
+.search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &_toggler {
+        width: 24px;
+        height: 24px;
+        margin-left: auto;
+        margin-right: 12px;
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        @include transition();
+
+        i {
+            color: transparent;
+        }
+    }
+
+    &_form {
+        width: 100%;
+    }
+
+    &_control {
+        position: relative;
+        display: flex;
+        margin: 0 12px;
+
+        i {
+            position: absolute;
+            top: 9px;
+            left: 14px;
+        }
+
+        input {
+            width: 100%;
+            max-width: 480px;
+            height: 45px;
+            padding-left: 43px;
+            padding-right: 14px;
+            border-radius: 8px;
+            background-color: var(--light);
+            border: 1px solid var(--light);
+            @include font-options();
+            outline: none;
+
+            &:focus {
+                border-color: var(--gray-100);
+            }
+        }
+    }
+}

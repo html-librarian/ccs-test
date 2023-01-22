@@ -1,0 +1,29 @@
+// Font style: weight, size, line-geight
+@mixin font-options($font-weight: 400, $font-size: 16px, $line-height: 1.25) {
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+}
+
+@mixin transition($transition: 0.2s ease-in-out) {
+    transition: $transition;
+}
+
+// Media 
+@mixin phone {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
