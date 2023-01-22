@@ -179,6 +179,7 @@
         justify-content: flex-end;
 
         a {
+            position: relative;
             display: inline-flex;
             align-items: center;
             text-decoration: none;
@@ -196,6 +197,18 @@
                 i {
                     color: var(--dark);
                 }
+            }
+
+            .badge {
+                position: absolute;
+                @include font-options(700, 12px, 15px);
+                color: var(--white);
+                padding: 2px 4px;
+                background: rgba(72, 89, 240, 0.99);
+                border: 2px solid rgba(72, 89, 240, 0.2);
+                border-radius: 10px;
+                left: 15px;
+                top: -10px;
             }
         }
     }
