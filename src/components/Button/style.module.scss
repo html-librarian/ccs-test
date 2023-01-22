@@ -1,11 +1,13 @@
 .button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     padding: 20px;
     border: none;
     border-radius: 16px;
     background-color: var(--blue);
     color: var(--white);
+    text-decoration: none;
     @include font-options(700, 22px, 27px);
     @include transition;
     cursor: pointer;

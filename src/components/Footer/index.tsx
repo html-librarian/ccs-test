@@ -8,13 +8,16 @@ import { Subscribe } from '../Forms/Subscribe';
 
 export const Footer = memo(() => {
     const { isMobile, isDesktop } = useMatchMedia();
+    
+    const today = new Date();
+    const year = today.getFullYear();
 
     const menuItems = useMemo(() => NAV_FOOTER.map(({ title, items }, index) => (
-            <div key={index} className={style.footer_block}>
+            <div key={ index } className={style.footer_block}>
                 <b>{ title }</b>
-                <nav className={style.footer_nav}>
-                    {items?.map((item) => (
-                        <>
+                <ul className={style.footer_nav}>
+                    {items?.map((item, index) => (
+                        <li key={ index }>
                             {item.phone ? (
                                 <Phone 
                                     number={ item.title }
@@ -28,9 +31,9 @@ export const Footer = memo(() => {
                                     { item.title }
                                 </Link>
                             )}
-                        </>
+                        </li>
                     ))}
-                </nav>
+                </ul>
             </div>
         )), [],
     );
@@ -48,7 +51,7 @@ export const Footer = memo(() => {
                 </div>
             </div>
             <div className={style.footer_copyright}>
-                © «Brand» <span>2022</span>, All Rights Reserved
+                © «Brand» { year }, All Rights Reserved
             </div>
         </footer>
     );
