@@ -1,3 +1,49 @@
 .hero {
     margin-top: 18px;
+
+    &_item {
+        background-size: cover;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    &_content {
+        display: flex;
+        flex-direction: column;
+        padding: 48px 24px;
+        background: linear-gradient(90.36deg, #1F2670 29.82%, rgba(39, 48, 139, 0) 99.68%);
+
+        @include tablet {
+            padding: 84px 48px;
+        }
+
+        @include desktop {
+            padding: 244px 96px 84px;
+        }
+
+        h1 {
+            @include font-options(700, 28px, 46px);
+    
+            color: var(--white);
+            width: 100%;
+
+            @include tablet {
+                max-width: 582px;
+            }
+
+            @include desktop {
+                @include font-options(700, 46px, 56px);
+            }
+        }
+    }
+
+    &_button {
+        margin-top: 40px;
+        width: 100%;
+
+        @include tablet {
+            margin-top: 110px;
+            max-width: 320px;
+        }
+    }
 }

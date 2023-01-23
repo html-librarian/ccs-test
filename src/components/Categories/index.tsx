@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType, Navigation } from 'swiper';
 
 import 'swiper/css';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from "react-router-dom";
 import { CATEGORIES } from "./constants";
 
@@ -23,8 +22,8 @@ export const Categories = memo(() => {
                 <div className={style.categories_title}>{ title }</div>
             </Link>
         </SwiperSlide>
-    )), [],
-);
+    )), []);
+
     return (
         <section className={style.categories}>
             <h2>
