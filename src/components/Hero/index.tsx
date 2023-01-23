@@ -1,14 +1,16 @@
-import { memo, useMemo, useRef } from "react";
-import style from "./style.module.scss";
+import { memo, useMemo, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType, Navigation } from 'swiper';
-
+import { Swiper as SwiperType, Pagination, Navigation } from 'swiper';
 import 'swiper/css';
-import { Link } from "react-router-dom";
+import "swiper/css/pagination";
 import { HEROES } from "./constants";
 import Button from "../Button";
 
+import style from "./style.module.scss";
+
 export const Hero = memo(() => {
+    const [controlledSwiper, setControlledSwiper] = useState(null);
+
     const heroesItems = useMemo(() => HEROES.map(({ title, path, image, buttonText }, index) => (
         <SwiperSlide
             className={style.hero_item}
@@ -29,7 +31,8 @@ export const Hero = memo(() => {
                 slidesPerView={"auto"}
                 freeMode={true}
                 className={style.hero_carousel}
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
+                pagination={{ clickable: true }}
                 lazy={{
                     loadPrevNext: true
                 }}

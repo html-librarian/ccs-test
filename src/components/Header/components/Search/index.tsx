@@ -8,24 +8,34 @@ import { Input } from '../../../Forms/components/Input/index';
 export const HeaderSearch = memo(() => {
     const { isMobile } = useMatchMedia();
     const [isMobileShow, setMobileShow] = useState(false);
+    const [search, setSearch] = useState('');
 
     const toggleSearch = () => {
         setMobileShow(!isMobileShow);
     };
 
+    const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        // Слушатель Enter
+    }
+
     return (
         <div className={style.search}>
             {isMobile ? (
                 <>
-                    <form className={style.search_form}>
+                    <form className={style.search_form} role="search">
                         {/* TODO: Сделать отдельным компонентом Инпут */}
                         {isMobileShow && (
                             <div className={style.search_control}>
                                 <SearchIcon />
                                 <Input
-                                    type="text"
+                                    type="search"
                                     placeholder="Search"
+                                    aria-label="Search site content"
                                     className={style.search_input}
+                                    onChange={(e) => {
+                                        setSearch(e.target.value)
+                                    }}
+                                    onKeyDown={handleSearchKeyDown}
                                 />
                             </div>
                         )}

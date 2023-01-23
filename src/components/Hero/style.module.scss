@@ -1,16 +1,19 @@
 .hero {
     margin-top: 18px;
+    border-radius: 16px;
+    overflow: hidden;
 
     &_item {
         background-size: cover;
         border-radius: 16px;
         overflow: hidden;
+        cursor: grab;
     }
 
     &_content {
         display: flex;
         flex-direction: column;
-        padding: 48px 24px;
+        padding: 58px 24px;
         background: linear-gradient(90.36deg, #1F2670 29.82%, rgba(39, 48, 139, 0) 99.68%);
 
         @include tablet {
@@ -45,5 +48,30 @@
             margin-top: 110px;
             max-width: 320px;
         }
+    }
+
+    :global(.swiper-pagination) {
+        z-index: 99;
+        bottom: 21px;
+        left: auto;
+        right: 0;
+
+        @include tablet {
+            text-align: right;
+            padding-right: 21px;
+        }
+    }
+
+    :global(.swiper-pagination-bullet) {
+        border-radius: 4px;
+        @include transition;
+    }
+
+    :global(.swiper-pagination-bullet:hover) {
+        opacity: 1;
+    }
+
+    :global(.swiper-pagination-bullet-active) {
+        width: 26px;
     }
 }
