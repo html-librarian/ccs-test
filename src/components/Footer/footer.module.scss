@@ -56,6 +56,11 @@
 
         li {
             margin-top: 6px;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
             a {
                 @include font-options(400, 16px, 19px);
                 color: #fff;
